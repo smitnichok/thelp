@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>{{ ticket.empl.first_name }} {{ ticket.empl.last_name }}</title>
+<div class="form-my-ticket">
+        {% csrf_token %}
+     <h2>Данные о техническом специалисте</h2>
+    <p><strong>ФИО:</strong> {{ ticket.empl.first_name }} {{ ticket.empl.last_name }}</p>
+    <p><strong>Телефон:</strong> {{ ticket.empl.number_phone }}</p>
+
+</div>
+{% endblock %}

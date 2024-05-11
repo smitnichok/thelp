@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Подробности заявки № {{ ticket.id }}</title>
+<div class="form-my-ticket">
+        {% csrf_token %}
+           <form method="post" action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="ticket_id" value="{{ t.id }}">
+                        <button class="close-button-detail" type="submit">
+                      <i> <img src="{% static 'helpdesk/images/galochka.png' %}" alt="Закрыть заявку" border="0" /></i>
+                        </button>
+                    </form>
+    <h2>Вы отправили заявку № {{ ticket.id }}</h2>
+    <p><strong>Тема: </strong>{{ ticket.title }}</p>
+    <p><strong>Оборудование:</strong> {{ ticket.equipment }}</p>
+    <p><strong>Статус:</strong> {{ ticket.status }}</p>
+    <p><strong>Тип обращения:</strong> {{ ticket.type }}</p>
+    <p><strong>Приоритет:</strong> {{ ticket.priority }}</p>
+    <p><strong>Специалист:</strong> {{ ticket.empl.first_name }} {{ ticket.empl.last_name }}</p>
+    <p><strong>Телефон:</strong> {{ ticket.empl.number_phone }}</p>
+    <p><strong>Отправлено:</strong> {{ ticket.opened_date }}</p>
+    <p><strong>Описание:</strong></p> <p class="description-details">{{ ticket.description }}</p>
+</div>
+{% endblock %}

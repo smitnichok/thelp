@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="shortcut icon" href="{% static 'helpdesk/images/icon2.ico' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Archivo+Black">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Poppins?sort=popularity">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto?query=r&sort=popularity">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Arvo?sort=popularity">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+ <div class="sidebar">
+<!--         <div class="pfofil">-->
+<!--        <h1 class="mini-logo">HelpDesk</h1><img class="mini-logotip" src="{% static 'helpdesk/images/chelik.png' %}">-->
+
+
+
+<!--      <a id="profile" href="/users/profile/" >{{user.first_name}} {{user.last_name}}</a>-->
+
+
+<!--      </div>-->
+    <ul>
+        <li><a href="/empl/show_ticket/">В процессе<img class="mini-logotip" src="{% static 'helpdesk/images/voskl.png' %}"> </a></li>
+        <li><a href="/empl/pageemp/">Активные<img class="mini-logotip" src="{% static 'helpdesk/images/vopros.png' %}"> </a></li>
+        <li><a href="/empl/wait_accept_empl/">На проверке<img class="mini-logotip" src="{% static 'helpdesk/images/chek.png' %}"></a></li>
+        <li><a href="/empl/closed_tickets_empl/">История<img class="mini-logotip" src="{% static 'helpdesk/images/history.png' %}"></a></li>
+        <li><a href="/empl/manuals/">Руководства<img class="mini-logotip" src="{% static 'helpdesk/images/kniga.png' %}"></a></li>
+        <li><a href="/empl/add_manual/">Новая статья<img class="mini-logotip" src="{% static 'helpdesk/images/plyus.png' %}"></a></li>
+        <li><a id="profile" href="/users/emplpfile/">{{ user.first_name }} {{ user.last_name }}</a></li>
+        <li><a href="{% url 'users:logout' %}"><img class="mini-logotip" src="{% static 'helpdesk/images/exit.png' %}"></a></li>
+    </ul>
+    </div>
+
+
+{% block content %}
+{% endblock%}
+
+{% block navigation %}
+{% endblock %}
+
+
+
+</body>
+</html>

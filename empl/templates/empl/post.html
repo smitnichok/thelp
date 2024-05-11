@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<title>{{post.title}}</title>
+<body class="posts">
+<h1>{{post.title}}</h1>
+{% if post.photo %}
+<p><img class="img-article-left" src="{{post.photo.url}}"></p>
+{% endif %}
+
+{{post.content|linebreaks}}
+</body>
+{% endblock %}

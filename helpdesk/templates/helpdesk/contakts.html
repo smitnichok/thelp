@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <title>Обратная связь</title>
+<div class="map">
+  <div class="map-box">
+      <h2>ТехПоддержка</h2>
+      <img class="logotip" src="{% static 'helpdesk/images/icon.png' %}">
+      <p>Режим работы: с 9:00 до 17:00</p>
+      <p>Выходные: сб, вс</p>
+      <p>2-я Ипподромная улица, 20б, Чита</p>
+      <p><a href="tel:+7 (495) 123-45-67">+7 (495) 123-45-67</a></p>
+      <p><a href="mailto:info@site.com">info@site.com</a></p>
+    </div>
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa22a72a366ed93e0690c34383c11fefc499d402108bda95c6b993252597e9a2e&amp;width=100%25&amp;height=444&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{% endblock %}

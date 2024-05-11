@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<title>История</title>
+<div class="wrapper">
+<table class="mytable">
+<thead>
+<tr>
+ <th colspan="8"><p>История заявок</p></th>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Тема</th>
+      <th scope="col">Оборудование/ПО</th>
+      <th scope="col">Тип</th>
+      <th scope="col">Приоритет</th>
+     <th scope="col">Отправлено</th>
+    <th scope="col">Выполнено</th>
+    <th scope="col">Заявитель</th>
+    </tr>
+</tr>
+</thead>
+<tbody>
+
+    {% for ticket in ticket_list %}
+
+
+            <tr>
+                <td class="short-cell" >{{ ticket.id }}</td>
+                <td class="long-cell" >{{ ticket.title }}</td>
+                <td>{{ ticket.equipment }}</td>
+
+                <td>{{ ticket.type }}</td>
+                <td {% if ticket.priority == 'высокий' %} style="color: #ff2424; border-color:#C5CAE3;"
+                 {% elif ticket.priority == 'средний' %} style="color: #fa0; border-color:#C5CAE3;"
+                 {% elif ticket.priority == 'низкий' %} style="color: #339c0c; border-color:#C5CAE3;"
+                {% endif %}> {{ ticket.priority }}</td>
+<<<<<<< HEAD
+                <td>{{ ticket.opened_date|date:"m.d.Y"  }}</td>
+=======
+                <td>{{ ticket.opened_date }}</td>
+>>>>>>> origin/master
+                <td>{{ ticket.closed_date|date:"m.d.Y" }}</td>
+                <td> {{ ticket.user.last_name }} {{ ticket.user.first_name }} </td>
+
+
+
+
+
+            </tr>
+
+    {% endfor %}
+</tbody>
+
+</table>
+
+</div>
+  <div class="filter-container">
+    <form method="get" action="">
+    <button  type="submit" name="sort" value="earliest">раньше <i class="bi bi-hourglass-top"></i></button>
+    <button  type="submit" name="sort" value="latest">позже <i class="bi bi-hourglass-bottom"></i></button>
+    </form>
+     </div>
+{% endblock %}
+
+
+
+<!--{% block navigation %}-->
+<!--{% if page_obj.has_other_pages %}-->
+<!--<nav class="list-pages">-->
+<!--    <ul>-->
+<!--        {% if page_obj.has_previous %}-->
+<!--        <li class="page-num">-->
+<!--          <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+
+<!--        {% for p in page_obj.paginator.page_range %}-->
+<!--            {% if page_obj.number == p %}-->
+<!--                <li class="page-num page-num-selected">{{ p }}</li>-->
+<!--            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}-->
+<!--                <li class="page-num">-->
+<!--                    <a href="?page={{ p }}">{{ p }}</a>-->
+<!--                </li>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+
+<!--        {% if page_obj.has_next %}-->
+<!--        <li class="page-num">-->
+<!--          <a href="?page={{ page_obj.next_page_number }}">&gt;</a>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+<!--    </ul>-->
+<!--</nav>-->
+<!--{% endif %}-->
+<!--{% endblock %}-->

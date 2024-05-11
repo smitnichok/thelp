@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<title>На проверке</title>
+
+<div class="wrapper">
+<table class="mytable">
+<thead>
+<tr>
+ <th colspan="8"><p>Заявки на проверке</p></th>
+<<<<<<< HEAD
+
+            <tr>
+      <th scope="col">№</th>
+      <th scope="col">Тема</th>
+      <th scope="col">Оборудование/ПО</th>
+      <th scope="col">Тип</th>
+      <th scope="col">Приоритет</th>
+      <th scope="col">Открыто</th>
+      <th scope="col">Заявитель</th>
+
+    </tr>
+
+
+=======
+</tr>
+>>>>>>> origin/master
+</thead>
+<tbody>
+
+    {% for t in ticket_list %}
+
+
+            <tr>
+                <td><a class="link" title="Посмотреть детели" href="{% url 'ticket_detail' t.id %}">{{ t.id}}</a></td>
+                <td><a class="link" title="Посмотреть детели" href="{% url 'ticket_detail' t.id %}">{{ t.title }}</a></td>
+                <td><a class="link" title="Посмотреть детели" href="{% url 'ticket_detail' t.id %}">{{ t.equipment }}</a></td>
+
+                <td>{{ t.type }}</td>
+                <td {% if t.priority == 'высокий' %} style="color: #ff2424; border-color:#C5CAE3;"
+                 {% elif t.priority == 'средний' %} style="color: #fa0; border-color:#C5CAE3;"
+                 {% elif t.priority == 'низкий' %} style="color: #339c0c; border-color:#C5CAE3;"
+                {% endif %}> {{ t.priority }}</td>
+                <td>{{ t.opened_date }}</td>
+
+                <td> {{ t.user.last_name }} {{ t.user.first_name }} </td>
+            </tr>
+
+    {% endfor %}
+</tbody>
+
+</table>
+
+</div>
+    <div class="filter-container">
+    <form method="get" action="">
+    <button  type="submit" name="sort" value="earliest">раньше <i class="bi bi-hourglass-top"></i></button>
+    <button  type="submit" name="sort" value="latest">позже <i class="bi bi-hourglass-bottom"></i></button>
+    </form>
+     </div>
+{% endblock %}

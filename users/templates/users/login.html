@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Техническая поддержка</title>
+      <link rel="shortcut icon" href="{% static 'helpdesk/images/icon2.ico' %}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Archivo+Black">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Poppins?sort=popularity">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto?query=r&sort=popularity">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Arvo?sort=popularity">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Lilita+One&family=Rubik+Mono+One&family=Titan+One&display=swap" rel="stylesheet">
+
+
+
+
+<body class="body-log">
+<div class="log-pg">
+    <form  method="post">
+        <h2 class="hdr">Техническая поддержка</h2><img class="logotip" src="{% static 'helpdesk/images/icon.png' %}">
+
+        {% csrf_token %}
+        <input  type="hidden" name="next" value="{{ next }}" />
+        <div class="form-error">{{ form.non_field_errors }}</div>
+      {% for f in form %}
+    <p>
+
+        {{ f.errors }}
+        {{ f }}
+    </p>
+    <script>
+        document.getElementById("{{ f.auto_id }}").placeholder = "{{ f.label }}";
+    </script>
+{% endfor %}
+        <p><button class="button_styles" type="submit" >Войти</button></p>
+        <p class="message"><a href="{% url 'users:register' %}">У меня нет аккаунта</a></p>
+        </form>
+    </div>
+
+</body>
+

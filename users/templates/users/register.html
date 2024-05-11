@@ -1,0 +1,30 @@
+{% load static %}
+    <title>Регистрация</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+
+<div class="log-pg">
+
+   <form action="" method="post" enctype="multipart/form-data">
+      <h2 class="hdr ">Техническая поддержка</h2>
+       {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <div class="form-error">{{ form.non_field_errors }}</div>
+      {% for f in form %}
+    <p>
+        {{ f.errors }}
+        {{ f }}
+    </p>
+    <script>
+        document.getElementById("{{ f.auto_id }}").placeholder = "{{ f.label }}";
+    </script>
+{% endfor %}
+  <p><button class="button_styles" type="submit">Создать аккаунт</button></p>
+
+        </form>
+    </div>
+</div>
+
+

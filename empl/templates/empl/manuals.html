@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<title>База знаний</title>
+<div class="cat-menu">
+<form action="" method="get">
+
+    <select  class="filter-manual" name="cat">
+        <option value="">Все категории</option>
+        <option value="1"></option>
+        <option value="2">хаахаххахтульки</option>
+    </select>
+    <button type="submit"><i><img src="{% static 'helpdesk/images/filtr.png' %}" class="plus"></i></button>
+</form>
+    </div>
+<div class="manuals">
+    <ul class="list-articles">
+        {% for p in posts %}
+            <li>
+                <div class="article-panel">
+                    <p class="first">Категория: {{p.cat.name}} | автор: {{ p.author.username|default:"неизвестен" }}</p>
+                    <p class="last">Дата: {{p.time_update|date:"d-m-Y"}}</p>
+                </div>
+                <h2>{{p.title}}</h2>
+                <p>
+                {% autoescape off %}
+                    {{p.content|linebreaks|truncatewords:40}}
+                {% endautoescape %}
+                </p>
+                <div class="clear"></div>
+                <p class="link-read-post"><a href="{{ p.get_absolute_url }}">Читать пост</a></p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+
+<!--{% block navigation %}-->
+<!--{% if page_obj.has_other_pages %}-->
+<!--<div class="paginators">-->
+
+<!--<nav class="list-pages">-->
+<!--    <ul>-->
+<!--        {% if page_obj.has_previous %}-->
+<!--        <li class="page-num">-->
+<!--          <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+
+<!--        {% for p in page_obj.paginator.page_range %}-->
+<!--            {% if page_obj.number == p %}-->
+<!--                <li class="page-num page-num-selected">{{ p }}</li>-->
+<!--            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}-->
+<!--                <li class="page-num">-->
+<!--                    <a href="?page={{ p }}">{{ p }}</a>-->
+<!--                </li>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+
+<!--        {% if page_obj.has_next %}-->
+<!--        <li class="page-num">-->
+<!--          <a href="?page={{ page_obj.next_page_number }}">&gt;</a>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+<!--    </ul>-->
+<!--</nav>-->
+<!--    </div>-->
+<!--{% endif %}-->
+<!--{% endblock %}-->

@@ -1,0 +1,22 @@
+ {% extends 'base.html' %}
+
+{% block content %}
+
+
+>
+
+<form class="ticket" action="" method="post" enctype="multipart/form-data">
+    <h1>Отзыв по исполненинию заявки № {{id.ticket.}}</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+    {% csrf_token %}
+    <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+
+    <button type="submit">Сохранить</button>
+
+    </form>
+
+
+ {% endblock %}
+

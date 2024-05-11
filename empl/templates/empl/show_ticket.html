@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<title>Мои заявки в процессе</title>
+<div class="wrapper">
+<table class="mytable">
+<thead>
+    <tr>
+
+     <th colspan="8"><p>Обрабатываемые заявки</p></th>
+            <tr>
+      <th scope="col">№</th>
+      <th scope="col">Тема</th>
+      <th scope="col">Оборудование/ПО</th>
+      <th scope="col">Тип</th>
+      <th scope="col">Приоритет</th>
+      <th scope="col">Открыто</th>
+      <th scope="col">Заявитель</th>
+        <th scope="col"> </th>
+    </tr>
+
+</thead>
+<tbody>
+  {% for t in ticket_list %}
+    <tr>
+        <td><a class="short-cell" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.id}}</a></td>
+        <td><a class="long-cell" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.title }}</a></td>
+        <td><a class="link" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.equipment }}</a></td>
+        <td><a class="link" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.type }}</a></td>
+        <td><a class="link" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.priority }}</a></td>
+        <td><a class="link" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.opened_date }}</a></td>
+        <td><a class="link" title="Посмотреть детели" href="{% url 'aktiv_ticket_details' t.id %}">{{ t.user.first_name }} {{ t.user.first_name }}</a></td>
+         <td>
+            <form method="post" action="">
+                {% csrf_token %}
+                <input type="hidden" name="ticket_id" value="{{ t.id }}">
+                <button class="close-button" type="submit"><i><img src="{% static 'helpdesk/images/galochka.png' %}" alt="Приступить к выполнению" border="0" /></i></button>
+            </form>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+
+</tbody>
+
+</table>
+    </div>
+ <div class="filter-container">
+    <form method="get" action="">
+    <button  type="submit" name="sort" value="earliest">раньше <i class="bi bi-hourglass-top"></i></button>
+    <button  type="submit" name="sort" value="latest">позже <i class="bi bi-hourglass-bottom"></i></button>
+    </form>
+     </div>
+{% endblock %}
+
+
+<!--{% block navigation %}-->
+<!--{% if page_obj.has_other_pages %}-->
+<!--<nav class="list-pages">-->
+<!--    <ul>-->
+<!--        {% if page_obj.has_previous %}-->
+<!--        <li class="page-num">-->
+<!--          <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+
+<!--        {% for p in page_obj.paginator.page_range %}-->
+<!--            {% if page_obj.number == p %}-->
+<!--                <li class="page-num page-num-selected">{{ p }}</li>-->
+<!--            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}-->
+<!--                <li class="page-num">-->
+<!--                    <a href="?page={{ p }}">{{ p }}</a>-->
+<!--                </li>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+
+<!--        {% if page_obj.has_next %}-->
+<!--        <li class="page-num">-->
+<!--          <a href="?page={{ page_obj.next_page_number }}">&gt;</a>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+<!--    </ul>-->
+<!--</nav>-->
+<!--{% endif %}-->
+<!--{% endblock %}-->
+
+
+
+
+
+
+
+

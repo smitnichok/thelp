@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<title>Подробности заявки № {{ ticket.id }}</title>
+<div class="form-my-ticket">
+           <form method="post" action="{% url 'delete_ticket' ticket.id %}">
+        {% csrf_token %}
+        <button title="Удалить" class="close-button-detail" type="submit" onclick="return confirm('Вы уверены, что хотите удалить эту заявку?')"><i class="bi bi-trash"></i></button>
+    </form>
+
+     <a href="{% url 'edit_ticket' ticket.id %}" class="close-button-detail" title="Редактировать">
+    <i class="bi bi-pencil"></i>
+</a>
+    <h2>Вы отправили заявку № {{ ticket.id }}</h2>
+
+    <p><strong>Тема: </strong>{{ ticket.title }}</p>
+    <p><strong>Оборудование:</strong> {{ ticket.equipment }}</p>
+    <p><strong>Статус:</strong> {{ ticket.status }}</p>
+    <p><strong>Тип обращения:</strong> {{ ticket.type }}</p>
+    <p><strong>Приоритет:</strong> {{ ticket.priority }}</p>
+
+    <p><strong>Описание:</strong></p> <p class="description-details">{{ ticket.description }}</p>
+
+
+
+
+
+
+</div>
+
+{% endblock %}

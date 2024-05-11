@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+
+<h1>Добро пожаловать!</h1>
+
+
+<div class="login-page">
+<div class="form">
+<p>Вы успешно зарегистрировались на сайте! Для входа в систему необходимо авторизоваться по этой
+  <a href="{% url 'users:login' %}">ссылке</a>
+</p>
+   </div>
+</div>
+

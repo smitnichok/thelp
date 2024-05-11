@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="manual">
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+
+
+    <p><p for="id_title">Тема</p><input type="text" name="title" class="form-input" maxlength="255" required id="id_title"></p>
+    <div class="form-error"></div>
+
+
+
+    <p><p  for="id_content">Текст статьи</p> <textarea name="content" cols="50" rows="5" id="id_content">
+</textarea> </p>
+    <div class="form-error"></div>
+
+    <p><p for="id_photo">Фото</p><input type="file" name="photo" accept="image/*" id="id_photo"></p>
+    <div class="form-error"></div>
+
+    <p for="id_cat">Категории</p>
+   <select name="cat" required id="id_cat">
+       <option value="" selected>Категория не выбрана</option>
+       {% for category in categories %}
+           <option value="{{ category.id }}">{{ category.name }}</option>
+       {% endfor %}
+   </select>
+
+
+
+
+
+
+
+
+
+
+
+</select></p>
+    <div class="form-error"></div>
+
+    <p><button type="submit">Отправить</button></p>
+</form>
+
+
+
+</div>
+
+{% endblock %}
+

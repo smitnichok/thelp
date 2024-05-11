@@ -1,0 +1,61 @@
+ {% extends 'base.html' %}
+
+{% block content %}
+<title>Редактировать</title>
+
+
+<form class="ticket" action="" method="post" enctype="multipart/form-data">
+    <h1>Редактирование заявки </h1>
+       {% csrf_token %}
+        <p>
+    <p for="id_title">Тема</p>
+    <input type="text" name="title" value="hgfhgf" maxlength="50" required id="id_title">
+
+  </p>
+
+
+
+  <p>
+    <p for="id_type">Тип обращения</p>
+    <select class="custom-dropdown"  name="type" id="id_type">
+  <option value="неожиданная проблема" selected>Неожиданная проблема</option>
+
+  <option value="повторное обращение">Повторное обращение</option>
+
+  <option value="консультация">Kонсультация</option>
+
+</select>
+
+
+  </p>
+
+
+  <p>
+    <p for="id_priority">Приоритет</p>
+    <select class="custom-dropdown"  name="priority" id="id_priority">
+  <option value="низкий" selected>Низкий</option>
+
+  <option value="средний">Средний</option>
+
+  <option value="высокий">Высокий</option>
+
+</select>
+
+
+  </p>
+
+
+  <p>
+    <p for="id_description"></p>
+    <textarea name="description" cols="40" rows="10" id="id_description">
+ghfgh</textarea>
+
+
+
+  </p>
+        <button type="submit">Сохранить</button>
+    </form>
+
+
+
+ {% endblock %}
