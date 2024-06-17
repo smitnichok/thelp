@@ -18,6 +18,8 @@ class LoginUser(LoginView):
     def get_success_url(self):
         if self.request.user.role_id == 3:
             return '/empl/pageemp/'
+        if self.request.user.role_id == 4:
+            return '/admin/'
         else:
             return '/helpdesk/mainpageusers/'
 

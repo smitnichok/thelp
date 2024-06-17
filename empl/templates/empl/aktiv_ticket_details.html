@@ -7,35 +7,19 @@
       <form method="post" action="">
                 {% csrf_token %}
                 <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
-                <button type="submit">отказаться</button>
+                <button type="submit"><i><img src="{% static 'helpdesk/images/otmenit.png' %}" alt="Закрыть" border="0" /></i></button>
             </form>
-
-
-
-
     <h2>Вы выполняете заявку № {{ ticket.id }}</h2>
-<<<<<<< HEAD
-    <h3><strong>Тема: </strong>{{ ticket.title }}</h3>
-=======
-    <h3><strong>Тема:</strong>{{ ticket.title }}</h3>
->>>>>>> origin/master
+    <p><strong>Тема: </strong>{{ ticket.title }}</p>
     <p><strong>Приоритет:</strong> {{ ticket.priority }}</p>
     <p><strong>Оборудование:</strong> {{ ticket.equipment }}</p>
-    <p><strong>Дата открытия:</strong> {{ ticket.opened_date }}</p>
+    <p><strong>Дата открытия:</strong> {{ ticket.opened_date|date:"m.d.Y"  }}</p>
     <p><strong>Тип обращения:</strong> {{ ticket.type }}</p>
     <p><strong>ФИО заявителя:</strong> {{ ticket.user.first_name }} {{ ticket.user.last_name }} </p>
     <p><strong>Телефон:</strong> {{ ticket.user.number_phone }}</p>
     <p><strong>Адрес магазина/офиса:</strong> {{ ticket.user.adress }}</p>
     <p><strong>№ кабинета: </strong> {{ ticket.user.cabinet}}</p>
     <p><strong>Описание:</strong></p> <p class="description-details">{{ ticket.description }}</p>
-
-
-
-
-
-
-
-
 </div>
 
 {% endblock %}

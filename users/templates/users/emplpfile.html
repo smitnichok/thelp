@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<title>Редактирование профиля</title>
 <div class="my-profile">
 <form method="post" enctype="multipart/form-data">
-    <h1>Ваши данные выглядят так</h1>
     {% csrf_token %}
     {% if user.photo %}
     <p><img src="{{ user.photo.url }}">
@@ -13,12 +12,14 @@
     {% endif %}
 
     <div class="form-error">{{ form.non_field_errors }}</div>
-    {% for f in form %}
+   {% for f in form %}
 
-    <p><p class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </p>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
+    {% if f.name != "post" %}
+        <p><p class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </p>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+    {% endif %}
 
-    {% endfor %}
+{% endfor %}
 
     <p><button class="button_styles" type="submit">Сохранить</button></p>
 </form>

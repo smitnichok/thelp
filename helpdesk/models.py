@@ -68,30 +68,4 @@ class UploadFiles(models.Model):
     file = models.FileField(upload_to='uploads_model')
 
 
-class Report(models.Model):
-    SPEED_CHOICES = (
-        ('быстро', 'Быстро'),
-        ('пришлось подождать', 'Пришлось подождать'),
-        ('очень долго', 'Очень долго'),
-    )
-
-    PROBLEM_CHOICES = (
-        ('проблема решилась сама', 'Проблема решилась сама'),
-        ('проблему решил сотрудник', 'Проблему решил сотрудник'),
-        ('самостоятельное решение', 'Самостоятельное решение'),
-    )
-
-    speed = models.CharField(max_length=50, choices=SPEED_CHOICES, default='быстро', verbose_name="Скорость")
-    feedback = models.TextField(verbose_name="Отзыв", blank=True)
-    decision = models.CharField(max_length=50, choices=PROBLEM_CHOICES, default='проблему решил сотрудник',
-                                verbose_name="Решение")
-    empl_evaluation = models.IntegerField(null=True, blank=True, verbose_name="Оценка сотрудника")
-    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, related_name='user_reports')
-    empl = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='empl_reports')
-    ticket = models.ForeignKey(Ticket, on_delete=models.SET_NULL, null=True, blank=True, related_name='reports')
-
-    def get_absolute_url(self):
-        return reverse('report_detail', args=[self.id])
-
-    def __str__(self):
-        return f"Report ID: {self.report_id} - {self.empl_evaluation} ({self.ticket})"
+5

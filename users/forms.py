@@ -7,9 +7,9 @@ from users.models import Adresses, User, Post
 
 
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label="логин",
+    username = forms.CharField(label="Логин",
                                widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password = forms.CharField(label="пароль",
+    password = forms.CharField(label="Пароль",
                                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
     class Meta:
@@ -18,9 +18,9 @@ class LoginUserForm(AuthenticationForm):
 
 
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label="логин", widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label="пароль", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label="повтор пароля", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label="Логин", widget=forms.TextInput(attrs={'class': 'form-input'}))
+    password1 = forms.CharField(label="Пароль", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    password2 = forms.CharField(label="Повтор пароля", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
     adress = forms.ModelChoiceField(queryset=Adresses.objects.all(), empty_label="Адрес магазина/офиса", label="адрес")
     post = forms.ModelChoiceField(queryset=Post.objects.all(), empty_label="Должность", label="Должность")
@@ -31,14 +31,13 @@ class RegisterUserForm(UserCreationForm):
                   'cabinet', 'adress']
         labels = {
             'email': 'E-mail',
-            'first_name': "имя",
-            'last_name': "фамилия",
-            'patronymic': 'отчество',
-            'number_phone': 'номер телефона',
-            'post': 'должность',
+            'first_name': "Имя",
+            'last_name': "Фамилия",
+            'patronymic': 'Отчество',
+            'number_phone': 'Номер телефона',
+            'post': 'Должность',
             'cabinet': '№ кабинета',
-            'adress': 'адрес',
-            'image': 'фото'
+            'adress': 'Адрес',
         }
         widgets = {
             'email': forms.EmailInput(attrs={'class': 'form-input'}),
@@ -65,14 +64,15 @@ class ProfileUserForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['first_name', 'last_name', 'username','patronymic',  'email', 'number_phone', 'cabinet', 'adress']
+        fields = ['first_name', 'last_name', 'username','patronymic',  'email', 'number_phone', 'cabinet', 'adress', 'post']
         labels = {
             'first_name': 'Имя',
             'last_name': 'Фамилия',
-            'patronymic': 'отчество',
-            'number_phone': 'номер телефона',
+            'patronymic': 'Отчество',
+            'number_phone': 'Номер телефона',
             'cabinet': '№ кабинета',
-            'adress': 'адрес',
+            'adress': 'Адрес',
+            'post': 'Должность',
 
         }
         widgets = {

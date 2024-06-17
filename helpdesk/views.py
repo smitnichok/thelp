@@ -5,14 +5,14 @@ from django.urls import reverse_lazy
 from django.views import View
 
 from empl.models import Manuals
-from helpdesk.forms import AddPostForm, TicketForm, ReportForm
+from helpdesk.forms import AddPostForm, TicketForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, ListView, UpdateView
 from django.shortcuts import redirect, get_object_or_404, render
 
 from users.models import User
-from .models import Ticket, Report
+from .models import Ticket
 
 
 def has_role2(user):
@@ -205,32 +205,7 @@ def delete_ticket(request, ticket_id):
     return redirect('mytickets')
 
 
-class AddReport(LoginRequiredMixin, CreateView):
-    form_class = ReportForm
-    template_name = 'helpdesk/add_report.html'
 
-    def form_valid(self, form):
-        report = form.save(commit=False)
-        report.user = self.request.user
-        report.save()
-
-        ticket_id = self.request.POST.get('ticket_id')
-        try:
-            ticket = Ticket.objects.get(id=int(ticket_id))
-            ticket.empl = self.request.user
-            ticket.status = 'Выполнена'
-            ticket.save()
-            return redirect('mytickets')
-        except (ValueError, Ticket.DoesNotExist):
-            return HttpResponseBadRequest("Invalid ticket ID")
-
-
-class ReportDetailView(LoginRequiredMixin, View):
-    template_name = 'helpdesk/report_detail.html'
-
-    def get(self, request, report_id, *args, **kwargs):
-        report = get_object_or_404(Report, id=report_id)
-        return render(request, self.template_name, {'report': report})
 
 
 class ShowContacts(LoginRequiredMixin, ListView):

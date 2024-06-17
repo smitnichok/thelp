@@ -7,12 +7,11 @@ from empl.models import Manuals, Category
 class AddPostManual(forms.ModelForm):
     class Meta:
         model = Manuals
-        fields = ['title', 'content', 'photo', 'cat',]
+        fields = ['title', 'content', 'photo', 'cat', ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
             'content': forms.Textarea(attrs={'cols': 50, 'rows': 5}),
         }
-
 
     def clean_title(self):
         title = self.cleaned_data['title']

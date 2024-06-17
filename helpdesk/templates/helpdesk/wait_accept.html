@@ -6,19 +6,21 @@
 <div class="wrapper">
 <table class="mytable">
 <thead>
-<tr>
- <th colspan="8"><p>Подтвердите выполнение</p></th>
  <tr>
+      <th colspan="9"><p>Заявки на проверке</p></th>
+    <tr>
       <th scope="col">№</th>
       <th scope="col">Тема</th>
       <th scope="col">Оборудование/ПО</th>
       <th scope="col">Тип</th>
       <th scope="col">Приоритет</th>
      <th scope="col">Отправлено</th>
-    <th scope="col">Исполнитель</th>
-       <th scope="col"> </th>
+    <th scope="col"> Исполнитель</th>
+      <th scope="col"> </th>
+
       <th scope="col"> </th>
     </tr>
+
 
 </thead>
 <tbody>
@@ -35,24 +37,17 @@
               color: #fa0; border-color: #c5cae3;
           {% elif t.priority == 'низкий' %}
               color: #339c0c; border-color: #c5cae3;
-          {% endif %}">
-                           {{ t.priority }}
-</td>
+          {% endif %}"> {{ t.priority }}</td>
                 <td><a class="link" title="Посмотреть детели" href="{% url 'wait_accept_detail' t.id %}">{{ t.opened_date |date:"m.d.Y" }}</a></td>
                 <td><a class="link" title="Посмотреть детели" href="{% url 'show_technik' t.id %}">{{ t.empl.first_name }} {{ t.empl.last_name }}</a><td>
-                       <form method="post" action="">
-
-
-                <td>
                     <form method="post" action="">
-
                         {% csrf_token %}
                         <input type="hidden" name="ticket_id" value="{{ t.id }}">
                         <button class="close-button" type="submit">
                       <i> <img src="{% static 'helpdesk/images/galochka.png' %}" alt="Закрыть заявку" border="0" /></i>
                         </button>
                     </form>
-                </td>
+
 
 
 
@@ -65,9 +60,8 @@
    </div>
  <div class="filter-container">
     <form method="get" action="">
-
-    <button  type="submit" name="sort" value="earliest">раньше <i class="bi bi-hourglass-top"></i></button>
-    <button  type="submit" name="sort" value="latest">позже <i class="bi bi-hourglass-bottom"></i></button>
+    <button  type="submit" name="sort" value="earliest">раньше <i> <img src="{% static 'helpdesk/images/pch2.png' %}" alt=Выход border="0" /></i></button>
+    <button  type="submit" name="sort" value="latest">позже <i> <img src="{% static 'helpdesk/images/pch.png' %}" alt=Выход border="0" /></i></button>
     </form>
      </div>
 

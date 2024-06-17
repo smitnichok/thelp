@@ -3,10 +3,10 @@
 {% block content %}
 
 
-
+<title>Редактирование профиля</title>
 <div class="my-profile">
 <form  method="post" enctype="multipart/form-data">
-    <h3>Ваши данные выглядят так:</h3>
+
     {% csrf_token %}
     {% if user.photo %}
     <p><img src="{{ user.photo.url }}">

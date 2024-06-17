@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect, render
 
-from helpdesk.models import Ticket, Report
+from helpdesk.models import Ticket
 
 
 class AddPostForm(forms.ModelForm):
@@ -39,19 +39,3 @@ class TicketForm(forms.ModelForm):
         fields = ['title', 'status', 'type', 'priority', 'description']
 
 
-class ReportForm(forms.ModelForm):
-    ticket_id = forms.IntegerField(widget=forms.HiddenInput())
-
-    class Meta:
-        model = Report
-        fields = ['speed', 'decision', 'empl_evaluation', 'feedback']
-
-    def init(self, *args, **kwargs):
-        ticket_id = kwargs.pop('ticket_id', None)
-        super(ReportForm, self).init(*args, **kwargs)
-
-        if ticket_id:
-            self.fields['ticket_id'].initial = ticket_id
-            ticket = Ticket.objects.get(id=ticket_id)
-            self.fields['id_empl'].initial = ticket.empl.id
-            self.fields['user_id'].initial = ticket.user.id

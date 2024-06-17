@@ -10,25 +10,19 @@
     <div class="form-error">{{ form.non_field_errors }}</div>
        {% for f in form %}
     {% if f.name == 'equipment' or f.name == 'type'  or f.name == 'priority'%}
-
-
             <p class="ticketp" for="{{ f.id_for_p }}">{{ f.label }}</p>
             <select name="{{ f.name }}" class="custom-dropdown">
                 {% for choice in f.field.choices %}
                     <option value="{{ choice.0 }}">{{ choice.1 }}</option>
                 {% endfor %}
             </select>
-
         <div class="form-error">{{ f.errors }}</div>
     {% else %}
-
             <p class="ticketp" for="{{ f.id_for_label }}">{{ f.label }}</p>
             {{ f }}
-
         <div class="form-error">{{ f.errors }}</div>
     {% endif %}
 {% endfor %}
-
     <p><button type="submit"><i> <img class="img-button" src="{% static 'helpdesk/images/sendticket.png' %}" > </i>Отправить</button></p>
 </form>
 {% endblock %}

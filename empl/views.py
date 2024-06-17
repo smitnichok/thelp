@@ -28,17 +28,30 @@ class ShowAllManuals(LoginRequiredMixin, ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            cat = self.request.GET.get('cat')
+        queryset = Manuals.objects.all()
+        cat = self.request.GET.get('cat')
 
-            if cat:
-                queryset = Manuals.objects.filter(cat_id=cat)
-            else:
-                queryset = Manuals.objects.all()
+        if cat:
+            queryset = queryset.filter(cat_id=cat)
 
-            return queryset
-        else:
-            return Manuals.objects.none()
+        return queryset
+
+    def get_context_data(self, *kwargs):
+        context = super().get_context_data(*kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+    # def get_queryset(self):
+    #     if self.request.user.is_authenticated:
+    #         cat = self.request.GET.get('cat')
+    #
+    #         if cat:
+    #             queryset = Manuals.objects.filter(cat_id=cat)
+    #         else:
+    #             queryset = Manuals.objects.all()
+    #
+    #         return queryset
+    #     else:
+    #         return Manuals.objects.none()
 
     # def get_queryset(self):
     #     return Manuals.objects.all()
@@ -181,14 +194,11 @@ class ShowWaitAcceptTicketsEmpl(LoginRequiredMixin, ListView):
     def get_queryset(self):
         if self.request.user.is_authenticated:
             queryset = Ticket.objects.filter(status='Ожидает подтверждения', empl=self.request.user)
-
             sort = self.request.GET.get('sort')
-
             if sort == 'earliest':
                 queryset = queryset.order_by('opened_date')
             elif sort == 'latest':
                 queryset = queryset.order_by('-opened_date')
-
             return queryset
         else:
             return Ticket.objects.none()
@@ -264,5 +274,3 @@ class AktivTicketDetailView(LoginRequiredMixin, View):
         if not has_role3(request.user):
             return HttpResponse("<h1>Отказано в доступе </h1>")  # Возврат пользователю сообщения об отказе в доступе
         return super().dispatch(request, *args, **kwargs)
-
-

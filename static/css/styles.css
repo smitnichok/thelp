@@ -7,26 +7,18 @@
 
 
 
-
-
-
-
 a:active {
     color: red; /* Изменить цвет ссылки при активном состоянии */
 }
 
 
-
 body {
-<<<<<<< HEAD
 background: rgb(193,199,238) !important;
 background: linear-gradient(90deg, rgba(193,199,238,0.4514180672268907) 0%, rgba(237,181,255,0.4009978991596639) 4%, rgba(102,69,252,0.3757878151260504) 100%)!important;
 
 
 
-
 background: #d3cfff;
->>>>>>> origin/master
 
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -58,7 +50,7 @@ background: #d3cfff;
 }
 
 .mytable td {
-
+    color: #A46EF2;
     font-family: 'Archivo Black', sans-serif;
     height:40px;
 	padding: 5px;
@@ -250,10 +242,9 @@ margin: 1%;
 
 
 .cat-menu {
-margin-top:3%;
- background:none;
-
- margin-bottom:5px;
+margin-top:2%;
+background:none;
+margin-bottom:1%;
 
 
 }
@@ -306,8 +297,7 @@ ul.list-articles li {
 .manuals {
   width:90%;
   height:620px;
-  margin-top:3%;
-  overflow-y: auto;
+  margin-top:8%;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   border-radius: 20px;
   background:white;
@@ -317,13 +307,20 @@ ul.list-articles li {
 
 .posts {
 background:white !important;
-width:100%;
+margin-top:1%;
+width:80%;
 height:100%;
+margin-left:10%;
 
+ border-radius: 20px;
 }
 
 .posts h1 {
  text-align: center;
+
+}
+.posts p {
+ margin:10px;
 
 }
 
@@ -375,8 +372,9 @@ color: #1d7720;
   font-size: 15px;
   border-radius: 30px;
   background:white;
-  max-width: 660px;
+  width: 50%;
   margin-top: 1%;
+    margin-left: 50%;
   padding: 15px;
   text-align: center;
   margin-left:30%;
@@ -538,7 +536,7 @@ text-decoration: none
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 500px;
+  max-width: 35%;
   margin: 10px auto;
   padding: 45px;
   text-align: center;
@@ -570,7 +568,7 @@ border: 1px solid #ccc;
 
 
 .log-pg h2 {
-
+   font-size:270%;
    font-family: "Rubik Mono One", monospace;
   text-align: center;
   margin-bottom: 20px;
@@ -651,22 +649,23 @@ margin-top:-15px;
   height:auto;
   width:80%;
   margin-top: 1%;
-  margin-left: 15%;
+  margin-left: 11%;
   background:white;
-  padding: 35px;
+  padding: 15px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .manual textarea
 {
   resize: none; /* Запретить изменение размера textarea */
     overflow-y: auto;
-    width:70%;
-    height:300px;
+    width:100%;
+    height:200px;
     font-size:18px;
 }
 .manual input {
-width:40%;
-height:40px;
+  padding: 1px;
+width:60%;
+height:30px;
 font-size:18px;
 }
 
@@ -677,7 +676,7 @@ font-size:18px;
 }
 
 .manual button {
-background:#6F62FF;
+background:#A46EF2;
 border:none;
 width:30%;
 height:50px;
@@ -686,9 +685,14 @@ margin-left:30%;
 cursor:pointer;
 border-radius:10px;
 color:white;
-
-
 }
+.manual button:hover {
+background:#8e25f7;
+}
+
+
+
+
 
 .ticket {
   height:60%;
@@ -808,36 +812,19 @@ height:30px;
 
 
 .form-my-ticket {
-
-  font-size: 18px ;
-
-  font-size: 14px;
-
+  font-size: 18px;
   border-radius: 30px;
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-
   height:auto;
   width: 40%;
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   position: absolute;
-  margin-top:1%;
+  margin-top:5%;
   margin-right:30%;
   margin-left:30%;
-
-
-  height:550px;
-  width: 800px;
-  padding: 60px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  position: absolute;
-  bottom: 90px;
-  left: 0;
-  right: 0;
-  margin:  auto;
-
   word-wrap: break-word;
 
  }
@@ -854,7 +841,11 @@ display: block;
   margin-bottom: 20px
 
  }
+.form-my-ticket button {
+ background:none;
+  border:none;
 
+ }
 .close-button-detail{
  background:none;
  float:right;
@@ -941,7 +932,7 @@ border:0px;}
 .wrapper {
   background:white;
   width:80%;
-  height:auto;
+  height:450px;
   margin-top: 1%;
   margin-left: 10%;
   margin-right: 10%;
@@ -951,6 +942,23 @@ border:0px;}
   border-radius: 30px;
 
 }
+.wrapper a {
+  color: #7502bd;
+
+}
+
+
+.wrapper a {
+  color: #7502bd;
+
+}
+
+
+
+.wrapper a:hover {
+  color: #7900c4;
+}
+
 .post-body {
 background:white;
 font-size:20px;
@@ -1096,5 +1104,23 @@ margin-top:-15px;
 
 	width: 100%;
 	height:auto;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+
+color: #fff;
+    text-decoration: none;
+    background-color: #A46EF2 !important;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #8e0dde !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #0d6efd;
 }
 

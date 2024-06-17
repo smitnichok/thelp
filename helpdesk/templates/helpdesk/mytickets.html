@@ -7,7 +7,7 @@
 <table class="mytable">
 <thead>
 <tr>
-<th colspan="8"><p>Мои заявки без исполнителя</p></th>
+<th colspan="9"><p>Мои заявки без исполнителя</p></th>
     <tr>
       <th scope="col">№</th>
       <th scope="col">Тема</th>
@@ -45,7 +45,7 @@
                 <td>
                     <button class="close-button">
                     <a href="{% url 'edit_ticket' t.id %}"  title="Редактировать">
-                        <i class="bi bi-pencil"></i>
+                       <i> <img src="{% static 'helpdesk/images/pencil.png' %}" alt="Редактировать" border="0" /></i>
                     </a>
                     </button>
                 </td>
@@ -53,7 +53,7 @@
                     <form method="post" action="{% url 'delete_ticket' t.id %}">
                         {% csrf_token %}
                         <button title="Удалить" class="close-button" type="submit" onclick="return confirm('Вы уверены, что хотите удалить эту заявку?')" >
-                            <i class="bi bi-trash"></i>
+                            <i> <img src="{% static 'helpdesk/images/trash.png' %}" alt="Удалить" border="0" /></i>
                         </button>
                     </form>
                 </td>
@@ -65,8 +65,8 @@
 </div>
  <div class="filter-container">
     <form method="get" action="">
-    <button  type="submit" name="sort" value="earliest">раньше <i class="bi bi-hourglass-top"></i></button>
-    <button  type="submit" name="sort" value="latest">позже <i class="bi bi-hourglass-bottom"></i></button>
+    <button  type="submit" name="sort" value="earliest">раньше <i> <img src="{% static 'helpdesk/images/pch2.png' %}" alt=Выход border="0" /></i></button>
+    <button  type="submit" name="sort" value="latest">позже <i> <img src="{% static 'helpdesk/images/pch.png' %}" alt=Выход border="0" /></i></button>
     </form>
      </div>
 {% endblock %}
